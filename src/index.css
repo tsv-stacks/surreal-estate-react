@@ -6,4 +6,10 @@ body,
 html {
   padding: 0;
   margin: 0;
+  background-color: lightgray;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* font-family: 'Libre Baskerville', serif;
+font-family: 'Nunito', sans-serif; */
