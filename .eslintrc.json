@@ -24,7 +24,15 @@
     "react/prop-types": [0],
     "import/order": [1],
     "no-unused-vars": [1],
-    "prettier/prettier": [1, { "endOfLine": "auto" }],
+    "prettier/prettier": [
+      1,
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "ignoreTrailingComma": true,
+        "comma-dangle": "off"
+      }
+    ],
     "react/jsx-filename-extension": [
       1,
       {
