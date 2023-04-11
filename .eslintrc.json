@@ -19,12 +19,20 @@
   },
   "plugins": ["react"],
   "rules": {
+    "comma-dangle": [0],
     "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],
     "react/prop-types": [0],
     "import/order": [1],
     "no-unused-vars": [1],
-    "prettier/prettier": [1, { "endOfLine": "auto" }],
+    "prettier/prettier": [
+      1,
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "ignoreTrailingComma": true
+      }
+    ],
     "react/jsx-filename-extension": [
       1,
       {
