@@ -19,6 +19,7 @@
   },
   "plugins": ["react"],
   "rules": {
+    "comma-dangle": [0],
     "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],
     "react/prop-types": [0],
@@ -29,8 +30,7 @@
       {
         "singleQuote": true,
         "endOfLine": "auto",
-        "ignoreTrailingComma": true,
-        "comma-dangle": "off"
+        "ignoreTrailingComma": true
       }
     ],
     "react/jsx-filename-extension": [
