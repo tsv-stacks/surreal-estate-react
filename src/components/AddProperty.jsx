@@ -6,6 +6,11 @@ const AddProperty = () => {
     fields: {
       title: '',
       city: '',
+      type: '',
+      bedrooms: 0,
+      bathrooms: 0,
+      price: 0,
+      email: '',
     },
   };
   const [fields, setFields] = useState(initialState.fields);
@@ -27,24 +32,27 @@ const AddProperty = () => {
     <div className="add-property">
       <h2>Add Property Page</h2>
       <form className="add-property__form" onSubmit={handleAddProperty}>
-        <label htmlFor="add-property__title">
+        <label htmlFor="add-property__form-title">
+          <p>Property Title</p>
           <input
             type="text"
             className="add-property__form-text"
             value={fields.title}
-            id="add-property__title"
+            id="add-property__form-title"
             onChange={handleFieldChange}
             name="title"
           />
         </label>
-        <label htmlFor="add-property__city">
+
+        <label htmlFor="add-property__form-city">
+          <p>Property city</p>
           <select
             name="city"
-            id="add-property__city"
+            id="add-property__form-city"
             onChange={handleFieldChange}
             value={fields.city}
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               -- CHOOSE CITY --
             </option>
             <option value="London">London</option>
@@ -56,6 +64,80 @@ const AddProperty = () => {
             <option value="Sheffield">Sheffield</option>
           </select>
         </label>
+
+        <label htmlFor="add-property__form-type">
+          <p>Property type</p>
+          <select
+            name="type"
+            id="add-property__form-type"
+            onChange={handleFieldChange}
+            value={fields.type}
+          >
+            <option value="" disabled>
+              -- PROPERTY TYPE --
+            </option>
+            <option value="Flat">Flat</option>
+            <option value="Detached">Detached</option>
+            <option value="Semi-Detached">Semi-Detached</option>
+            <option value="Terraced">Terraced</option>
+            <option value="End of Terrace">End of Terrace</option>
+            <option value="Cottage">Cottage</option>
+            <option value="Bungalow">Bungalow</option>
+          </select>
+        </label>
+
+        <label htmlFor="add-property__form-bedrooms">
+          <p>No. of Bedrooms</p>
+          <input
+            type="number"
+            onChange={handleFieldChange}
+            id="add-property__form-bedrooms"
+            name="bedrooms"
+            value={fields.bedrooms}
+            min={1}
+            max={20}
+          />
+        </label>
+
+        <label htmlFor="add-property__form-bathrooms">
+          <p>No. of Bathrooms</p>
+          <input
+            type="number"
+            onChange={handleFieldChange}
+            id="add-property__form-bathrooms"
+            name="bathrooms"
+            value={fields.bathrooms}
+            min={1}
+            max={20}
+          />
+        </label>
+
+        <label htmlFor="add-property__form-price">
+          <p>Property Value</p>
+          £
+          <input
+            type="number"
+            onChange={handleFieldChange}
+            id="add-property__form-price"
+            name="price"
+            value={fields.price}
+            min={0.01}
+            step={0.01}
+          />
+        </label>
+
+        <label htmlFor="add-property__form-email">
+          <p>Email Address</p>
+          <input
+            type="email"
+            className="add-property__form-text"
+            value={fields.email}
+            id="add-property__form-email"
+            onChange={handleFieldChange}
+            name="email"
+          />
+        </label>
+
         <button className="add-property__form-btn" type="submit">
           Add
         </button>
