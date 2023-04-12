@@ -1,7 +1,46 @@
+.add-property__form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 5%;
+  font-family: 'Nunito', sans-serif;
+}
+
+.add-property__form-label {
+  margin-bottom: 5px;
+}
+
+.add-property__form label:first-of-type .add-property__form-label {
+  margin-top: 0;
+}
+
+.add-property__title {
+  text-align: center;
+}
+
 .add-property__form-btn:active {
-  transform: scale(1.1);
+  transform: translateY(4px);
+}
+
+.add-property__form-btn:hover {
+  border: 2px solid goldenrod;
+  color: white;
+  background-color: purple;
+  cursor: pointer;
 }
 
 .add-property__form-btn {
   display: block;
+  color: purple;
+  margin: 15px auto;
+  padding: 5px 15px;
+  border: 2px solid purple;
+  background-color: white;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 425px) {
+  .add-property__form {
+    padding: 0 10%;
+  }
 }
