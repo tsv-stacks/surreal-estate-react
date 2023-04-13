@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/add-property.css';
+import axios from 'axios';
 
 const AddProperty = () => {
   const initialState = {
@@ -26,6 +27,13 @@ const AddProperty = () => {
   const handleAddProperty = (event) => {
     event.preventDefault();
     console.log(fields);
+    axios
+      .post(
+        'https://surreal-estate-var1.onrender.com/api/v1/PropertyListing',
+        fields
+      )
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -47,6 +55,7 @@ const AddProperty = () => {
         <label htmlFor="add-property__form-city">
           <p className="add-property__form-label">Property city</p>
           <select
+            required
             name="city"
             id="add-property__form-city"
             onChange={handleFieldChange}
