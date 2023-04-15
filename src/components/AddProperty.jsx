@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/add-property.css';
 import axios from 'axios';
+import Alert from './Alert';
 
 const AddProperty = () => {
   const initialState = {
@@ -15,6 +16,11 @@ const AddProperty = () => {
     },
   };
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState({
+    message: '',
+    isSuccess: false,
+    isLoading: false,
+  });
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
@@ -27,19 +33,40 @@ const AddProperty = () => {
   const handleAddProperty = (event) => {
     event.preventDefault();
     console.log(fields);
+    setAlert((prev) => ({
+      ...prev,
+      message: 'Loading...',
+      isLoading: true,
+      isSuccess: false,
+    }));
     axios
       .post(
         'https://surreal-estate-var1.onrender.com/api/v1/PropertyListing',
         fields
       )
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+      .then(() => {
+        setAlert((prev) => ({
+          ...prev,
+          message: 'Property Added.',
+          isSuccess: true,
+          isLoading: false,
+        }));
+      })
+      .catch(() => {
+        setAlert((prev) => ({
+          ...prev,
+          message: 'Server Error. Please try again later.',
+          isSuccess: false,
+          isLoading: false,
+        }));
+      });
   };
 
   return (
     <div className="add-property">
       <h2 className="add-property__title">Add Property</h2>
       <form className="add-property__form" onSubmit={handleAddProperty}>
+        {alert.message && <Alert alert={alert} />}
         <label htmlFor="add-property__form-title">
           <p className="add-property__form-label">Property Title</p>
           <input
