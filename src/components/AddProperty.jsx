@@ -51,6 +51,14 @@ const AddProperty = () => {
           isSuccess: true,
           isLoading: false,
         }));
+        setTimeout(() => {
+          setAlert((prev) => ({
+            ...prev,
+            message: '',
+            isSuccess: false,
+            isLoading: false,
+          }));
+        }, 5000);
       })
       .catch(() => {
         setAlert((prev) => ({
@@ -59,6 +67,14 @@ const AddProperty = () => {
           isSuccess: false,
           isLoading: false,
         }));
+        setTimeout(() => {
+          setAlert((prev) => ({
+            ...prev,
+            message: '',
+            isSuccess: false,
+            isLoading: false,
+          }));
+        }, 5000);
       });
   };
 
