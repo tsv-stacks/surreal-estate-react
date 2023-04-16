@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import PropertyCard from './PropertyCard';
 
 const Properties = () => {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://surreal-estate-var1.onrender.com/api/v1/PropertyListing')
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  }, []);
+
   const validProps = {
     _id: '64385ef73680b366284f9d40',
     title: 'Big House',
