@@ -1,0 +1,40 @@
+.prop-card {
+  font-family: 'Nunito', sans-serif;
+  padding-left: 10px;
+}
+
+.prop-card__title {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.prop-card__container--flex {
+  display: flex;
+}
+
+.prop-card__container-text {
+  margin: 0;
+}
+
+.prop-card--italics {
+  font-style: italic;
+}
+
+.prop-card__container-link:link {
+  text-decoration: none;
+}
+
+.prop-card__container-link:visited {
+  text-decoration: none;
+}
+
+.prop-card__container-link:hover {
+  text-decoration: none;
+}
+
+.prop-card__container-link:active {
+  text-decoration: none;
+}
+
+.prop-card__email-text {
+  color: white;
+}
