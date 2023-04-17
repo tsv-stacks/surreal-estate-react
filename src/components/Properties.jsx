@@ -59,22 +59,14 @@ const Properties = () => {
       });
   }, []);
 
-  const validProps = {
-    _id: '64385ef73680b366284f9d40',
-    title: 'Big House',
-    city: 'Birmingham',
-    type: 'Cottage',
-    bedrooms: '2',
-    bathrooms: '2',
-    price: '100000',
-    email: 'tsv@Stacks',
-    __v: 0,
-  };
-
   return (
     <div>
-      <h2>Properties</h2>
-      {alert.message && <Alert alert={alert} />}
+      <div className="prop-title-load">
+        <h2 className="prop-title-load__title">Properties</h2>
+        {alert.message && (
+          <Alert className="prop-title-load__loader" alert={alert} />
+        )}
+      </div>
       <div className="prop-grid">
         {properties.length > 0 ? (
           properties.map((property) => (

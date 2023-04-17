@@ -8,13 +8,13 @@ import { ReactComponent as Email } from '../assets/email.svg';
 const PropertyCard = ({ props }) => (
   <div className="prop-card">
     <h4 className="prop-card__title">{props.title}</h4>
-    <p>image placeholder</p>
+    {props.img ? <img src={props.img} alt="" /> : <p>image placeholder</p>}
     <p className="prop-card--italics">{`${props.type} - ${props.city}`}</p>
-    <div className="prop-card__container--flex prop-card__bedroom">
+    <div className="prop-card__container--flex prop-card__bedroom prop-card__container--bottom-pad">
       <Bed />
       <p className="prop-card__container-text">{props.bedrooms}</p>
     </div>
-    <div className="prop-card__container--flex prop-card__bathroom">
+    <div className="prop-card__container--flex prop-card__bathroom prop-card__container--bottom-pad">
       <Bath width="24px" height="24px" />
       <p className="prop-card__container-text">{props.bathrooms}</p>
     </div>
@@ -31,5 +31,4 @@ const PropertyCard = ({ props }) => (
     </div>
   </div>
 );
-
 export default PropertyCard;

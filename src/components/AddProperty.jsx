@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/add-property.css';
 import axios from 'axios';
 import Alert from './Alert';
+import data from '../assets/api-res.json';
 
 const AddProperty = () => {
   const initialState = {
@@ -13,15 +14,17 @@ const AddProperty = () => {
       bathrooms: 0,
       price: 0,
       email: '',
+      img: '',
     },
   };
+  // new state for image, setimage, conditional add image state to field state
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState({
     message: '',
     isSuccess: false,
     isLoading: false,
   });
-
+  // use effect axios, get, []
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
     return setFields((prev) => ({
@@ -189,7 +192,7 @@ const AddProperty = () => {
             name="email"
           />
         </label>
-
+        {/* image source : new state var - img  add handler - onCheck */}
         <button className="add-property__form-btn" type="submit">
           Add Property
         </button>

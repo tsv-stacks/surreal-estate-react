@@ -1,3 +1,7 @@
+.prop-title-load__title {
+  text-align: center;
+}
+
 .prop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -13,6 +17,7 @@
 
 .prop-card__title {
   font-family: 'Libre Baskerville', serif;
+  text-align: center;
 }
 
 .prop-card__container--flex {
@@ -31,6 +36,10 @@
   display: flex;
   margin: 0;
   padding: 0;
+}
+
+.prop-card__container--bottom-pad {
+  margin-bottom: 5px;
 }
 
 .prop-card__container-link:link {
@@ -60,4 +69,10 @@
   max-width: 60%;
   margin: 10px auto;
   cursor: pointer;
+}
+
+@media (max-width: 425px) {
+  .prop-title-load__title {
+    font-size: 16px;
+  }
 }
