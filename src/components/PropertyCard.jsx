@@ -22,12 +22,13 @@ const PropertyCard = ({ props }) => (
       <Gbp width="24px" height="24px" />
       <p className="prop-card__container-text">{props.price}</p>
     </div>
-    <a className="prop-card__container-link" href={`mailto: ${props.email}`}>
-      <div className="prop-card__container--flex prop-card__email">
+
+    <div className="prop-card__container--flex prop-card__email">
+      <a className="prop-card__container-link" href={`mailto: ${props.email}`}>
         <Email color="white" />
         <p className="prop-card__container-text prop-card__email-text">Email</p>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 );
 

@@ -1,5 +1,6 @@
 .alert {
   text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
 
 .alert__message {
