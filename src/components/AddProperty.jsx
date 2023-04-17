@@ -4,7 +4,9 @@ import axios from 'axios';
 import Alert from './Alert';
 import data from '../assets/api-res.json';
 
-const AddProperty = () => {
+const AddProperty = ({ props }) => {
+  console.log(props);
+  console.log('rendered');
   const initialState = {
     fields: {
       title: '',
@@ -14,7 +16,7 @@ const AddProperty = () => {
       bathrooms: 0,
       price: 0,
       email: '',
-      img: '',
+      img: 'https://raw.githubusercontent.com/tsv-stacks/surreal-estate-react/propcard/src/assets/placeholder.png',
     },
   };
   // new state for image, setimage, conditional add image state to field state
@@ -32,6 +34,13 @@ const AddProperty = () => {
       [name]: value,
     }));
   };
+
+  // function getRandomImage(data) {
+  //   const cleanArray =
+  //   const randomNumber = Math.floor(Math.random() * data.length);
+  // }
+
+  // console.log(dataManip(data));
 
   const handleAddProperty = (event) => {
     event.preventDefault();
