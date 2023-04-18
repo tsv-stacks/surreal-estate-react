@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/add-property.css';
 import axios from 'axios';
 import Alert from './Alert';
@@ -7,6 +7,14 @@ import data from '../assets/api-res.json';
 const AddProperty = ({ props }) => {
   console.log(props);
   console.log('rendered');
+
+  const [randomImages, setRandomImages] = useState([]);
+
+  useEffect(() => {
+    setRandomImages(() => [...props]);
+  }, [props]);
+
+  console.log('props passes as state', props);
   const initialState = {
     fields: {
       title: '',
@@ -19,14 +27,14 @@ const AddProperty = ({ props }) => {
       img: 'https://raw.githubusercontent.com/tsv-stacks/surreal-estate-react/propcard/src/assets/placeholder.png',
     },
   };
-  // new state for image, setimage, conditional add image state to field state
+
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState({
     message: '',
     isSuccess: false,
     isLoading: false,
   });
-  // use effect axios, get, []
+
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
     return setFields((prev) => ({
@@ -36,11 +44,8 @@ const AddProperty = ({ props }) => {
   };
 
   // function getRandomImage(data) {
-  //   const cleanArray =
   //   const randomNumber = Math.floor(Math.random() * data.length);
   // }
-
-  // console.log(dataManip(data));
 
   const handleAddProperty = (event) => {
     event.preventDefault();
