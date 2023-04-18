@@ -4,6 +4,18 @@
   padding: 0 5%;
   font-family: 'Nunito', sans-serif;
 }
+.add-property__form-radio-label {
+  display: block;
+}
+
+.add-property__form-radio-label__disabled {
+  cursor: not-allowed;
+}
+
+.add-property__form-fieldset {
+  margin-top: 16px;
+  font-style: italic;
+}
 
 .add-property__form-label {
   margin-bottom: 5px;

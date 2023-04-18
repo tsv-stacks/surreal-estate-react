@@ -201,6 +201,54 @@ const AddProperty = ({ props }) => {
             name="email"
           />
         </label>
+
+        <fieldset className="add-property__form-fieldset">
+          <legend className="add-property__form-fieldset-legend">
+            Choose Image Source
+          </legend>
+
+          <label
+            className="add-property__form-radio-label add-property__form-radio-label__disabled"
+            htmlFor="add-property__form-radio-upload"
+            title="Coming Soon..."
+          >
+            <input
+              className="add-property__form-radio"
+              type="radio"
+              name="add-property__form-radio"
+              id="add-property__form-radio-upload"
+              disabled
+            />
+            Upload Image
+          </label>
+
+          <label
+            className="add-property__form-radio-label"
+            htmlFor="add-property__form-radio-random"
+          >
+            <input
+              className="add-property__form-radio"
+              type="radio"
+              name="add-property__form-radio"
+              id="add-property__form-radio-random"
+            />
+            Random Image
+          </label>
+
+          <label
+            className="add-property__form-radio-label"
+            htmlFor="add-property__form-radio-default"
+          >
+            <input
+              className="add-property__form-radio"
+              type="radio"
+              name="add-property__form-radio"
+              id="add-property__form-radio-default"
+            />
+            Default Image
+          </label>
+        </fieldset>
+
         {/* image source : new state var - img  add handler - onCheck */}
         <button className="add-property__form-btn" type="submit">
           Add Property

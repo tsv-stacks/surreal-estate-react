@@ -11,7 +11,7 @@ const Properties = () => {
     isLoading: false,
   });
 
-  console.log(properties);
+  console.log('rendered properties', properties);
 
   useEffect(() => {
     setAlert((prev) => ({
