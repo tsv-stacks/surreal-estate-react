@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropertyCard from './PropertyCard';
 import Alert from './Alert';
+import SideBar from './SideBar';
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
@@ -60,21 +61,24 @@ const Properties = () => {
   }, []);
 
   return (
-    <div>
-      <div className="prop-title-load">
-        <h2 className="prop-title-load__title">Properties</h2>
-        {alert.message && (
-          <Alert className="prop-title-load__loader" alert={alert} />
-        )}
-      </div>
-      <div className="prop-grid">
-        {properties.length > 0 ? (
-          properties.map((property) => (
-            <PropertyCard props={property} key={property._id} />
-          ))
-        ) : (
-          <p>No Properties</p>
-        )}
+    <div className="property-sidebar-container flex">
+      <SideBar />
+      <div className="property-container__title-grid">
+        <div className="prop-title-load">
+          <h2 className="prop-title-load__title">Properties</h2>
+          {alert.message && (
+            <Alert className="prop-title-load__loader" alert={alert} />
+          )}
+        </div>
+        <div className="prop-grid">
+          {properties.length > 0 ? (
+            properties.map((property) => (
+              <PropertyCard props={property} key={property._id} />
+            ))
+          ) : (
+            <p>No Properties</p>
+          )}
+        </div>
       </div>
     </div>
   );

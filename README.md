@@ -4,8 +4,10 @@
 - [ ] move webiste to .env var
 - [ ] image optimisation
 - [ ] adjust API to accept object for img
+- [ ] update initial state for placeholder and default images
 - [ ] add alt text and id (as key) to each image from img object
 - [ ] error handling for unsplash api
+- [ ] use toast for loading, error and success messages
 
 This is a 3 week track where you will create a property search engine similar to RightMove or Zoopla. It is a big one so focus more on taking time to understand the concepts, rather than rushing through to the end - the material isn't going anywhere!
 
