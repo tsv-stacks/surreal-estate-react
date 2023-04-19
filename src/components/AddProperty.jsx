@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/add-property.css';
 import axios from 'axios';
 import Alert from './Alert';
-import data from '../assets/api-res.json';
 
 const AddProperty = ({ props }) => {
-  console.log(props);
   console.log('rendered');
 
   const [randomImages, setRandomImages] = useState([]);
@@ -14,7 +12,7 @@ const AddProperty = ({ props }) => {
     setRandomImages(() => [...props]);
   }, [props]);
 
-  console.log('props passes as state', props);
+  // console.log('props passes as state', props);
   const initialState = {
     fields: {
       title: '',
@@ -25,6 +23,7 @@ const AddProperty = ({ props }) => {
       price: 0,
       email: '',
       img: 'https://raw.githubusercontent.com/tsv-stacks/surreal-estate-react/propcard/src/assets/placeholder.png',
+      useDefaultImg: true,
     },
   };
 
@@ -36,16 +35,29 @@ const AddProperty = ({ props }) => {
   });
 
   const handleFieldChange = (event) => {
-    const { name, value } = event.target;
+    // eslint-disable-next-line object-curly-newline
+    const { name, type, id, value } = event.target;
+    if (type === 'radio' && id === 'add-property__form-radio-random') {
+      const randomNumber = Math.floor(Math.random() * randomImages.length);
+      console.log(randomImages[randomNumber]);
+      return setFields((prev) => ({
+        ...prev,
+        img: randomImages[randomNumber],
+        useDefaultImg: false,
+      }));
+    }
+    if (type === 'radio' && id === 'add-property__form-radio-default') {
+      return setFields((prev) => ({
+        ...prev,
+        img: 'https://raw.githubusercontent.com/tsv-stacks/surreal-estate-react/propcard/src/assets/placeholder.png',
+        useDefaultImg: true,
+      }));
+    }
     return setFields((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-
-  // function getRandomImage(data) {
-  //   const randomNumber = Math.floor(Math.random() * data.length);
-  // }
 
   const handleAddProperty = (event) => {
     event.preventDefault();
@@ -229,19 +241,6 @@ const AddProperty = ({ props }) => {
 
           <label
             className="add-property__form-radio-label"
-            htmlFor="add-property__form-radio-random"
-          >
-            <input
-              className="add-property__form-radio"
-              type="radio"
-              name="add-property__form-radio"
-              id="add-property__form-radio-random"
-            />
-            Random Image
-          </label>
-
-          <label
-            className="add-property__form-radio-label"
             htmlFor="add-property__form-radio-default"
           >
             <input
@@ -249,12 +248,31 @@ const AddProperty = ({ props }) => {
               type="radio"
               name="add-property__form-radio"
               id="add-property__form-radio-default"
+              // eslint-disable-next-line react/jsx-boolean-value
+              value={true}
+              checked={fields.useDefaultImg === true}
+              onChange={handleFieldChange}
             />
             Default Image
           </label>
+
+          <label
+            className="add-property__form-radio-label"
+            htmlFor="add-property__form-radio-random"
+          >
+            <input
+              className="add-property__form-radio"
+              type="radio"
+              name="add-property__form-radio"
+              id="add-property__form-radio-random"
+              value={false}
+              checked={fields.useDefaultImg === false}
+              onChange={handleFieldChange}
+            />
+            Random Image
+          </label>
         </fieldset>
 
-        {/* image source : new state var - img  add handler - onCheck */}
         <button className="add-property__form-btn" type="submit">
           Add Property
         </button>
