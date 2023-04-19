@@ -19,6 +19,7 @@
   },
   "plugins": ["react"],
   "rules": {
+    "object-curly-newline": "off",
     "comma-dangle": [0],
     "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],

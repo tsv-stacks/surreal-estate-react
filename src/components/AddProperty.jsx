@@ -35,14 +35,14 @@ const AddProperty = ({ props }) => {
   });
 
   const handleFieldChange = (event) => {
-    // eslint-disable-next-line object-curly-newline
     const { name, type, id, value } = event.target;
+
     if (type === 'radio' && id === 'add-property__form-radio-random') {
       const randomNumber = Math.floor(Math.random() * randomImages.length);
-      console.log(randomImages[randomNumber]);
+      console.log(randomImages[randomNumber].url);
       return setFields((prev) => ({
         ...prev,
-        img: randomImages[randomNumber],
+        img: randomImages[randomNumber].url,
         useDefaultImg: false,
       }));
     }

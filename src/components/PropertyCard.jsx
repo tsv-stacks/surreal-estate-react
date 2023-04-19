@@ -8,7 +8,11 @@ import { ReactComponent as Email } from '../assets/email.svg';
 const PropertyCard = ({ props }) => (
   <div className="prop-card">
     <h4 className="prop-card__title">{props.title}</h4>
-    {props.img ? <img src={props.img} alt="" /> : <p>No image found</p>}
+    {props.img ? (
+      <img src={props.img} alt="" className="prop-card__image" />
+    ) : (
+      <p>No image found</p>
+    )}
     <p className="prop-card--italics">{`${props.type} - ${props.city}`}</p>
     <div className="prop-card__container--flex prop-card__bedroom prop-card__container--bottom-pad">
       <Bed />

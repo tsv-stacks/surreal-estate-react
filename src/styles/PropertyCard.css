@@ -10,6 +10,12 @@
   padding-right: 20px;
 }
 
+.prop-card__image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
 .prop-card {
   font-family: 'Nunito', sans-serif;
   padding: 0 10px;
