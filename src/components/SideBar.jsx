@@ -5,6 +5,7 @@ const SideBar = ({ properties }) => {
   console.log('sidebar', properties);
 
   const [propertiesArray, setPropertiesArray] = useState([]);
+  const [uniqueCityArray, setUniqueCityArray] = useState([]);
   // set new state for unique cities use that to render input
   const [sidebarCities, setSidebarCities] = useState({});
 
@@ -24,6 +25,7 @@ const SideBar = ({ properties }) => {
       setSidebarCities(() => ({
         ...citiesObject,
       }));
+      setUniqueCityArray(() => [...uniqueCities]);
       console.log(sidebarCities);
     } else {
       console.log('no cities found');
@@ -61,16 +63,16 @@ const SideBar = ({ properties }) => {
       <h3>Sidebar</h3>
       <p>{propertiesArray.length}</p>
       <form>
-        {/* {propertiesArray.length > 0 && (
+        {propertiesArray.length > 0 && (
           <div className="wrapper">
-            {sidebarCities.map((sideCity) => (
+            {uniqueCityArray.map((sideCity) => (
               <label htmlFor="sidebar__input">
                 <input type="checkbox" name="" id="" />
                 <p>{sideCity}</p>
               </label>
             ))}
           </div>
-        )} */}
+        )}
       </form>
     </nav>
   );
