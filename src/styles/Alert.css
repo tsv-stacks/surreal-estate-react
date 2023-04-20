@@ -1,0 +1,22 @@
+.alert {
+  text-align: center;
+}
+
+.alert__message {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+@media (max-width: 425px) {
+  .alert__message {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 350px) {
+  .alert__message {
+    font-size: 14px;
+  }
+}
