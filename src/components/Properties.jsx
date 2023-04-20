@@ -62,7 +62,7 @@ const Properties = () => {
 
   return (
     <div className="property-sidebar-container flex">
-      <SideBar />
+      <SideBar properties={properties} />
       <div className="property-container__title-grid">
         <div className="prop-title-load">
           <h2 className="prop-title-load__title">Properties</h2>
