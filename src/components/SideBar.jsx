@@ -6,7 +6,6 @@ const SideBar = ({ properties }) => {
 
   const [propertiesArray, setPropertiesArray] = useState([]);
   const [uniqueCityArray, setUniqueCityArray] = useState([]);
-  // set new state for unique cities use that to render input
   const [sidebarCities, setSidebarCities] = useState({});
 
   useEffect(() => {
@@ -16,8 +15,7 @@ const SideBar = ({ properties }) => {
   useEffect(() => {
     if (propertiesArray.length > 0) {
       const citiesSelected = propertiesArray.map((property) => property.city);
-      const uniqueCities = [...new Set(citiesSelected)];
-      console.log(uniqueCities);
+      const uniqueCities = [...new Set(citiesSelected)].sort();
       const citiesObject = uniqueCities.reduce(
         (obj, city) => ({ ...obj, [city]: false }),
         {}
@@ -45,7 +43,7 @@ const SideBar = ({ properties }) => {
   //     ));
   //   }
   // oncheck
-  console.log(sidebarCities);
+  console.log(uniqueCityArray, sidebarCities);
   // when state changes, run use effect to make api call
 
   // if all options unchecked add logic to make normal request
@@ -62,13 +60,23 @@ const SideBar = ({ properties }) => {
     <nav className="sidebar">
       <h3>Sidebar</h3>
       <p>{propertiesArray.length}</p>
+      <p>{uniqueCityArray}</p>
       <form>
         {propertiesArray.length > 0 && (
-          <div className="wrapper">
+          <div className="sidebar-city">
             {uniqueCityArray.map((sideCity) => (
-              <label htmlFor="sidebar__input">
-                <input type="checkbox" name="" id="" />
-                <p>{sideCity}</p>
+              <label
+                className="sidebar-city__label"
+                htmlFor={`sidebar-city__input-${sideCity}`}
+              >
+                {sideCity}
+                <input
+                  type="checkbox"
+                  name={`${sideCity}`}
+                  //   checked={sidebarCities}
+                  id={`sidebar-city__input-${sideCity}`}
+                  className="sidebar-city__input"
+                />
               </label>
             ))}
           </div>

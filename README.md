@@ -8,6 +8,8 @@
 - [ ] add alt text and id (as key) to each image from img object
 - [ ] error handling for unsplash api
 - [ ] use toast for loading, error and success messages
+- [ ] sidebar: make clicking the text update the checkbox
+- [ ] make side bar show in alpahebetical order
 
 https://fkhadra.github.io/react-toastify/introduction/
 https://www.npmjs.com/package/react-toastify

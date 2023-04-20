@@ -5,3 +5,7 @@
 .sidebar {
   width: 15%;
 }
+
+.sidebar-city__label {
+  display: block;
+}
