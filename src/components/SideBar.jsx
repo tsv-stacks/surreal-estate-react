@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Sidebar.css';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ properties }) => {
   console.log('sidebar', properties);
@@ -65,19 +66,21 @@ const SideBar = ({ properties }) => {
         {propertiesArray.length > 0 && (
           <div className="sidebar-city">
             {uniqueCityArray.map((sideCity) => (
-              <label
-                className="sidebar-city__label"
-                htmlFor={`sidebar-city__input-${sideCity}`}
-              >
-                {sideCity}
-                <input
-                  type="checkbox"
-                  name={`${sideCity}`}
-                  //   checked={sidebarCities}
-                  id={`sidebar-city__input-${sideCity}`}
-                  className="sidebar-city__input"
-                />
-              </label>
+              <Link to={`/?query={"city":"${sideCity}"}`}>
+                <label
+                  className="sidebar-city__label"
+                  htmlFor={`sidebar-city__input-${sideCity}`}
+                >
+                  {sideCity}
+                  <input
+                    type="checkbox"
+                    name={`${sideCity}`}
+                    //   checked={sidebarCities}
+                    id={`sidebar-city__input-${sideCity}`}
+                    className="sidebar-city__input"
+                  />
+                </label>
+              </Link>
             ))}
           </div>
         )}

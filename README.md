@@ -8,8 +8,11 @@
 - [ ] add alt text and id (as key) to each image from img object
 - [ ] error handling for unsplash api
 - [ ] use toast for loading, error and success messages
-- [ ] sidebar: make clicking the text update the checkbox
-- [ ] make side bar show in alpahebetical order
+- [x] sidebar: make clicking the text update the checkbox
+- [x] make side bar show in alpahebetical order
+- [ ] if uniquecityarray and sidebarcity have content do not change,
+- [ ] if more than one value true, use array.push method on api call
+- create new array- logic to pop or push depending on whether checked, set array as "to" in Link
 
 https://fkhadra.github.io/react-toastify/introduction/
 https://www.npmjs.com/package/react-toastify
