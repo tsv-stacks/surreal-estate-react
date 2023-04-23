@@ -7,12 +7,58 @@
 - [ ] update initial state for placeholder and default images
 - [ ] add alt text and id (as key) to each image from img object
 - [ ] error handling for unsplash api
-- [ ] use toast for loading, error and success messages
+- [x] use toast for loading, error and success messages
+- [ ] custom style of toast, remove weird janky animation
 - [x] sidebar: make clicking the text update the checkbox
 - [x] make side bar show in alpahebetical order
 - [ ] if uniquecityarray and sidebarcity have content do not change,
 - [ ] if more than one value true, use array.push method on api call
 - [ ] create new array- logic to pop or push depending on whether checked, set array as "to" in Link
+
+  <!-- // let boxStyle = {
+  //   backgroundColor: isSuccess ? '#e6ffe6' : '#ffe6e6',
+  //   color: isSuccess ? '#006600' : '#cc0000',
+  //   border: '2px double',
+  //   borderColor: isSuccess ? '#006600' : '#cc0000',
+  // };
+
+  // if (isLoading) {
+  //   boxStyle = {
+  //     backgroundColor: '#e9c46a',
+  //     color: '#bc6c25',
+  //     border: '2px double',
+  //     borderColor: '#bc6c25',
+  //   };
+  // }
+
+  // const Alert = ({ alert }) => {
+//   const { isSuccess, message, isLoading } = alert;
+
+//   let boxStyle = {
+//     backgroundColor: isSuccess ? '#e6ffe6' : '#ffe6e6',
+//     color: isSuccess ? '#006600' : '#cc0000',
+//     border: '2px double',
+//     borderColor: isSuccess ? '#006600' : '#cc0000',
+//   };
+
+//   if (isLoading) {
+//     boxStyle = {
+//       backgroundColor: '#e9c46a',
+//       color: '#bc6c25',
+//       border: '2px double',
+//       borderColor: '#bc6c25',
+//     };
+//   }
+
+//   return (
+//     <div className="alert">
+//       <h4 className="alert__message" style={boxStyle}>
+//         {message}
+//       </h4>
+//     </div>
+//   );
+// }; -->
+
 
 https://fkhadra.github.io/react-toastify/introduction/
 https://www.npmjs.com/package/react-toastify
