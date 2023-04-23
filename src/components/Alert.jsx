@@ -1,32 +1,48 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Alert.css';
 
 const Alert = ({ alert }) => {
   const { isSuccess, message, isLoading } = alert;
+  const type = 'info';
 
-  let boxStyle = {
-    backgroundColor: isSuccess ? '#e6ffe6' : '#ffe6e6',
-    color: isSuccess ? '#006600' : '#cc0000',
-    border: '2px double',
-    borderColor: isSuccess ? '#006600' : '#cc0000',
+  const showToast = () => {
+    const toastOptions = {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      newestOnTop: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+      bodyClassName: 'custom-toast-body',
+      className: '',
+    };
+
+    if (isLoading) {
+      toastOptions.type = 'info';
+      toastOptions.className = 'toast-loading';
+      toastOptions.toastId = 'loading-toast';
+    } else if (isSuccess) {
+      toast.dismiss('loading-toast');
+      toastOptions.type = 'success';
+      toastOptions.className = 'toast-success';
+    } else {
+      toastOptions.type = 'error';
+      toastOptions.className = 'toast-error';
+    }
+
+    toast[type](message, toastOptions);
   };
 
-  if (isLoading) {
-    boxStyle = {
-      backgroundColor: '#e9c46a',
-      color: '#bc6c25',
-      border: '2px double',
-      borderColor: '#bc6c25',
-    };
-  }
+  React.useEffect(() => {
+    showToast();
+  }, [alert.message]);
 
-  return (
-    <div className="alert">
-      <h4 className="alert__message" style={boxStyle}>
-        {message}
-      </h4>
-    </div>
-  );
+  return null;
 };
 
 export default Alert;

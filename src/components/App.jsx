@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 import '../styles/app.css';
 import AddProperty from './AddProperty';
 import Navbar from './Navbar';
@@ -40,6 +41,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Properties />} />
