@@ -8,6 +8,7 @@ const SideBar = ({ properties }) => {
   const [propertiesArray, setPropertiesArray] = useState([]);
   const [uniqueCityArray, setUniqueCityArray] = useState([]);
   const [sidebarCities, setSidebarCities] = useState({});
+  const [selectedCities, setSelectedCities] = useState([]);
 
   useEffect(() => {
     setPropertiesArray(properties);
@@ -30,8 +31,19 @@ const SideBar = ({ properties }) => {
       console.log('no cities found');
     }
   }, [propertiesArray]);
-  // create select input for cities
 
+  const handleChange = (event) => {
+    const { checked, name } = event.target;
+    console.log('check change', event.target.name);
+    setSidebarCities((prev) => ({
+      ...prev,
+      [name]: !checked,
+    }));
+    console.log(sidebarCities[name]);
+  };
+  // create select input for cities
+  // change state of sidebarCities to:
+  // {cityName : "", checkedStatus:}
   //   make axios request on change using :
   // surreal-estate-var1.onrender.com/api/v1/PropertyListing?query={"city":["Manchester"]}
 
@@ -44,7 +56,7 @@ const SideBar = ({ properties }) => {
   //     ));
   //   }
   // oncheck
-  console.log(uniqueCityArray, sidebarCities);
+  //   console.log(uniqueCityArray, sidebarCities);
   // when state changes, run use effect to make api call
 
   // if all options unchecked add logic to make normal request
@@ -75,9 +87,10 @@ const SideBar = ({ properties }) => {
                   <input
                     type="checkbox"
                     name={`${sideCity}`}
-                    //   checked={sidebarCities}
                     id={`sidebar-city__input-${sideCity}`}
                     className="sidebar-city__input"
+                    onChange={handleChange}
+                    checked={sidebarCities[sideCity] === true}
                   />
                 </label>
               </Link>

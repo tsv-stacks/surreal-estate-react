@@ -10,8 +10,6 @@ const Alert = ({ alert }) => {
   const showToast = () => {
     const toastOptions = {
       position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
       newestOnTop: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -26,13 +24,19 @@ const Alert = ({ alert }) => {
       toastOptions.type = 'info';
       toastOptions.className = 'toast-loading';
       toastOptions.toastId = 'loading-toast';
+      toastOptions.autoClose = '20000';
+      toastOptions.hideProgressBar = true;
     } else if (isSuccess) {
       toast.dismiss('loading-toast');
       toastOptions.type = 'success';
       toastOptions.className = 'toast-success';
+      toastOptions.autoClose = '3000';
+      toastOptions.hideProgressBar = false;
     } else {
       toastOptions.type = 'error';
       toastOptions.className = 'toast-error';
+      toastOptions.autoClose = '3000';
+      toastOptions.hideProgressBar = false;
     }
 
     toast[type](message, toastOptions);

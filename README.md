@@ -1,6 +1,7 @@
 # Surreal Estate React App
 
 ## To Do
+
 - [ ] move webiste to .env var
 - [ ] image optimisation
 - [ ] adjust API to accept object for img
@@ -34,31 +35,30 @@
   // const Alert = ({ alert }) => {
 //   const { isSuccess, message, isLoading } = alert;
 
-//   let boxStyle = {
-//     backgroundColor: isSuccess ? '#e6ffe6' : '#ffe6e6',
-//     color: isSuccess ? '#006600' : '#cc0000',
-//     border: '2px double',
-//     borderColor: isSuccess ? '#006600' : '#cc0000',
-//   };
+// let boxStyle = {
+// backgroundColor: isSuccess ? '#e6ffe6' : '#ffe6e6',
+// color: isSuccess ? '#006600' : '#cc0000',
+// border: '2px double',
+// borderColor: isSuccess ? '#006600' : '#cc0000',
+// };
 
-//   if (isLoading) {
-//     boxStyle = {
-//       backgroundColor: '#e9c46a',
-//       color: '#bc6c25',
-//       border: '2px double',
-//       borderColor: '#bc6c25',
-//     };
-//   }
+// if (isLoading) {
+// boxStyle = {
+// backgroundColor: '#e9c46a',
+// color: '#bc6c25',
+// border: '2px double',
+// borderColor: '#bc6c25',
+// };
+// }
 
-//   return (
-//     <div className="alert">
-//       <h4 className="alert__message" style={boxStyle}>
-//         {message}
-//       </h4>
-//     </div>
-//   );
+// return (
+// <div className="alert">
+// <h4 className="alert__message" style={boxStyle}>
+// {message}
+// </h4>
+// </div>
+// );
 // }; -->
-
 
 https://fkhadra.github.io/react-toastify/introduction/
 https://www.npmjs.com/package/react-toastify
