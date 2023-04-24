@@ -4,8 +4,27 @@
 
 .sidebar {
   width: 15%;
+  font-family: 'Nunito', sans-serif;
+  margin-left: 10px;
 }
 
 .sidebar-city__label {
   display: block;
+  cursor: pointer;
+}
+
+.sidebar-city__title {
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.sidebar-city__link {
+  text-decoration: none;
+  height: auto;
+  margin-left: 15px;
+}
+
+.sidebar-city {
+  display: flex;
+  flex-direction: column;
 }

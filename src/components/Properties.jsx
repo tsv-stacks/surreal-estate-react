@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import PropertyCard from './PropertyCard';
 import Alert from './Alert';
 import SideBar from './SideBar';
 
 const Properties = () => {
+  const { search } = useLocation();
+
   const [properties, setProperties] = useState([]);
+  // new state for side bar, unless new call made, only on first render
+  // whenever new call made, set state and pass to properties
+  // remove logic in sidebar
+
   const [alert, setAlert] = useState({
     message: '',
     isSuccess: false,
     isLoading: false,
   });
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://surreal-estate-var1.onrender.com/api/v1/PropertyListing${search}`
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  }, [search]);
 
   console.log('rendered properties', properties);
 
@@ -21,7 +39,7 @@ const Properties = () => {
       isLoading: true,
       isSuccess: false,
     }));
-
+    // remove setTimeout
     axios
       .get('https://surreal-estate-var1.onrender.com/api/v1/PropertyListing')
       .then((res) => {
@@ -59,7 +77,7 @@ const Properties = () => {
         }, 3000);
       });
   }, []);
-
+  // pass cities array into sidebar
   return (
     <div className="property-sidebar-container flex">
       <SideBar properties={properties} />

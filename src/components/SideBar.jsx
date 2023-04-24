@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const SideBar = ({ properties }) => {
   console.log('sidebar', properties);
 
+  const [selectedProps, setSelectedProps] = useState([]);
+
   const [propertiesArray, setPropertiesArray] = useState([]);
   const [uniqueCityArray, setUniqueCityArray] = useState([]);
   const [sidebarCities, setSidebarCities] = useState({});
@@ -67,14 +69,15 @@ const SideBar = ({ properties }) => {
 
   return (
     <nav className="sidebar">
-      <h3>Sidebar</h3>
-      <p>{propertiesArray.length}</p>
-      <p>{uniqueCityArray}</p>
+      <h3 className="sidebar-city__title">Filter by city:</h3>
       <form>
         {propertiesArray.length > 0 && (
           <div className="sidebar-city">
             {uniqueCityArray.map((sideCity) => (
-              <Link to={`/?query={"city":"${sideCity}"}`}>
+              <Link
+                className="sidebar-city__link"
+                to={`/?query={"city":"${sideCity}"}`}
+              >
                 <label
                   className="sidebar-city__label"
                   htmlFor={`sidebar-city__input-${sideCity}`}
@@ -94,6 +97,8 @@ const SideBar = ({ properties }) => {
           </div>
         )}
       </form>
+      <p>{propertiesArray.length}</p>
+      <p>{uniqueCityArray}</p>
     </nav>
   );
 };
