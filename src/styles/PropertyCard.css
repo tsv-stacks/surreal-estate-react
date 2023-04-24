@@ -10,11 +10,17 @@
   padding-right: 20px;
 }
 
-.prop-card__image {
+.prop-card__image,
+.prop-card__image-error {
   width: 100%;
   height: 210px;
   object-fit: cover;
   border: 1px solid purple;
+}
+
+.prop-card__image-error {
+  text-align: center;
+  font-style: italic;
 }
 
 .prop-card {

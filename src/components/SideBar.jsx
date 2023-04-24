@@ -8,7 +8,6 @@ const SideBar = ({ properties }) => {
   const [propertiesArray, setPropertiesArray] = useState([]);
   const [uniqueCityArray, setUniqueCityArray] = useState([]);
   const [sidebarCities, setSidebarCities] = useState({});
-  const [selectedCities, setSelectedCities] = useState([]);
 
   useEffect(() => {
     setPropertiesArray(properties);
@@ -55,19 +54,16 @@ const SideBar = ({ properties }) => {
   //       </label>
   //     ));
   //   }
-  // oncheck
+
   //   console.log(uniqueCityArray, sidebarCities);
   // when state changes, run use effect to make api call
 
-  // if all options unchecked add logic to make normal request
-
-  // pass properties into sidebar as props
+  // if all options unchecked && checked add logic to make normal request
 
   // create link to create input, pass props
 
-  // map through and use only first instance of city to prevent duplicate
-
   // use location hook
+  // how to update if more than one locatio, hook, use ternary array to pop and push
 
   return (
     <nav className="sidebar">

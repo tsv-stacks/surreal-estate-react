@@ -11,7 +11,7 @@ const PropertyCard = ({ props }) => (
     {props.img ? (
       <img src={props.img} alt="" className="prop-card__image" />
     ) : (
-      <p>No image found</p>
+      <p className="prop-card__image-error">No image found</p>
     )}
     <p className="prop-card--italics">{`${props.type} - ${props.city}`}</p>
     <div className="prop-card__container--flex prop-card__bedroom prop-card__container--bottom-pad">
