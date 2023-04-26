@@ -8,16 +8,13 @@ import SideBar from './SideBar';
 const Properties = () => {
   const { search } = useLocation();
 
-  const [properties, setProperties] = useState([]);
-  // new state for side bar, unless new call made, only on first render
-  // whenever new call made, set state and pass to properties
-  // remove logic in sidebar
-
   const [alert, setAlert] = useState({
     message: '',
     isSuccess: false,
     isLoading: false,
   });
+  const [properties, setProperties] = useState([]);
+  const [uniqueCityArray, setUniqueCityArray] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,12 +22,24 @@ const Properties = () => {
         `https://surreal-estate-var1.onrender.com/api/v1/PropertyListing${search}`
       )
       .then((res) => {
-        console.log(res);
+        const { data } = res;
+        setProperties(data);
+        setAlert((prev) => ({
+          ...prev,
+          message: 'Page Refreshed.',
+          isSuccess: true,
+          isLoading: false,
+        }));
       })
-      .catch((error) => console.log(error));
+      .catch(() => {
+        setAlert((prev) => ({
+          ...prev,
+          message: 'Error. Please Refresh the page or try again later.',
+          isSuccess: false,
+          isLoading: false,
+        }));
+      });
   }, [search]);
-
-  console.log('rendered properties', properties);
 
   useEffect(() => {
     setAlert((prev) => ({
@@ -39,26 +48,21 @@ const Properties = () => {
       isLoading: true,
       isSuccess: false,
     }));
-    // remove setTimeout
+
     axios
       .get('https://surreal-estate-var1.onrender.com/api/v1/PropertyListing')
       .then((res) => {
         const { data } = res;
-        setProperties(() => [...data]);
+        setProperties(data);
         setAlert((prev) => ({
           ...prev,
           message: 'Page Refreshed.',
           isSuccess: true,
           isLoading: false,
         }));
-        setTimeout(() => {
-          setAlert((prev) => ({
-            ...prev,
-            message: '',
-            isSuccess: false,
-            isLoading: false,
-          }));
-        }, 3000);
+        const citiesSelected = data.map((proper) => proper.city);
+        const uniqueCities = [...new Set(citiesSelected)].sort();
+        setUniqueCityArray(uniqueCities);
       })
       .catch(() => {
         setAlert((prev) => ({
@@ -67,20 +71,12 @@ const Properties = () => {
           isSuccess: false,
           isLoading: false,
         }));
-        setTimeout(() => {
-          setAlert((prev) => ({
-            ...prev,
-            message: '',
-            isSuccess: false,
-            isLoading: false,
-          }));
-        }, 3000);
       });
   }, []);
-  // pass cities array into sidebar
+
   return (
     <div className="property-sidebar-container flex">
-      <SideBar properties={properties} />
+      <SideBar uniqueCityArray={uniqueCityArray} />
       <div className="property-container__title-grid">
         <div className="prop-title-load">
           <h2 className="prop-title-load__title">Properties</h2>

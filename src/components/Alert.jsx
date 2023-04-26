@@ -12,7 +12,7 @@ const Alert = ({ alert }) => {
       position: 'top-right',
       newestOnTop: true,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       theme: 'light',
@@ -30,12 +30,12 @@ const Alert = ({ alert }) => {
       toast.dismiss('loading-toast');
       toastOptions.type = 'success';
       toastOptions.className = 'toast-success';
-      toastOptions.autoClose = '3000';
+      toastOptions.autoClose = '1000';
       toastOptions.hideProgressBar = false;
     } else {
       toastOptions.type = 'error';
       toastOptions.className = 'toast-error';
-      toastOptions.autoClose = '3000';
+      toastOptions.autoClose = '1000';
       toastOptions.hideProgressBar = false;
     }
 

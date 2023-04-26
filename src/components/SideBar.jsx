@@ -2,46 +2,24 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Sidebar.css';
 import { Link } from 'react-router-dom';
 
-const SideBar = ({ properties }) => {
-  console.log('sidebar', properties);
-
-  const [selectedProps, setSelectedProps] = useState([]);
+const SideBar = ({ uniqueCityArray }) => {
+  console.log('sidebar', uniqueCityArray);
 
   const [propertiesArray, setPropertiesArray] = useState([]);
-  const [uniqueCityArray, setUniqueCityArray] = useState([]);
-  const [sidebarCities, setSidebarCities] = useState({});
 
   useEffect(() => {
-    setPropertiesArray(properties);
-  }, [properties]);
+    setPropertiesArray(uniqueCityArray);
+  }, [uniqueCityArray]);
 
-  useEffect(() => {
-    if (propertiesArray.length > 0) {
-      const citiesSelected = propertiesArray.map((property) => property.city);
-      const uniqueCities = [...new Set(citiesSelected)].sort();
-      const citiesObject = uniqueCities.reduce(
-        (obj, city) => ({ ...obj, [city]: false }),
-        {}
-      );
-      setSidebarCities(() => ({
-        ...citiesObject,
-      }));
-      setUniqueCityArray(() => [...uniqueCities]);
-      console.log(sidebarCities);
-    } else {
-      console.log('no cities found');
-    }
-  }, [propertiesArray]);
-
-  const handleChange = (event) => {
-    const { checked, name } = event.target;
-    console.log('check change', event.target.name);
-    setSidebarCities((prev) => ({
-      ...prev,
-      [name]: !checked,
-    }));
-    console.log(sidebarCities[name]);
-  };
+  // const handleChange = (event) => {
+  //   const { checked, name } = event.target;
+  //   console.log('check change', event.target.name);
+  //   setSidebarCities((prev) => ({
+  //     ...prev,
+  //     [name]: !checked,
+  //   }));
+  //   console.log(sidebarCities[name]);
+  // };
   // create select input for cities
   // change state of sidebarCities to:
   // {cityName : "", checkedStatus:}
@@ -57,9 +35,6 @@ const SideBar = ({ properties }) => {
   //     ));
   //   }
 
-  //   console.log(uniqueCityArray, sidebarCities);
-  // when state changes, run use effect to make api call
-
   // if all options unchecked && checked add logic to make normal request
 
   // create link to create input, pass props
@@ -67,15 +42,17 @@ const SideBar = ({ properties }) => {
   // use location hook
   // how to update if more than one locatio, hook, use ternary array to pop and push
 
+  // do not render if uniqueCityArray.length === 0
   return (
     <nav className="sidebar">
       <h3 className="sidebar-city__title">Filter by city:</h3>
       <form>
         {propertiesArray.length > 0 && (
           <div className="sidebar-city">
-            {uniqueCityArray.map((sideCity) => (
+            {propertiesArray.map((sideCity) => (
               <Link
                 className="sidebar-city__link"
+                key={sideCity}
                 to={`/?query={"city":"${sideCity}"}`}
               >
                 <label
@@ -88,8 +65,8 @@ const SideBar = ({ properties }) => {
                     name={`${sideCity}`}
                     id={`sidebar-city__input-${sideCity}`}
                     className="sidebar-city__input"
-                    onChange={handleChange}
-                    checked={sidebarCities[sideCity] === true}
+                    // onChange={handleChange}
+                    // checked={sidebarCities[sideCity] === true}
                   />
                 </label>
               </Link>
@@ -97,8 +74,6 @@ const SideBar = ({ properties }) => {
           </div>
         )}
       </form>
-      <p>{propertiesArray.length}</p>
-      <p>{uniqueCityArray}</p>
     </nav>
   );
 };
