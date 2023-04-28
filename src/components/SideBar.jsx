@@ -17,17 +17,17 @@ const SideBar = ({ uniqueCityArray }) => {
   const handleChange = (event) => {
     const { value, checked, name } = event.target;
     console.log(value, checked, name);
-    if (selectedCities.includes(name)) {
-      setSelectedCities(selectedCities.filter((city) => city !== name));
-    } else {
-      setSelectedCities([...selectedCities, name]);
-    }
+    setSelectedCities((prevState) => {
+      if (prevState.includes(name)) {
+        return prevState.filter((city) => city !== name);
+      }
+      return [...prevState, name];
+    });
     console.log(selectedCities);
   };
 
   const buildQueryString = (operation, valueObj) => {
     const { search } = useLocation();
-    console.log(search);
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...currentQueryParams,
@@ -61,7 +61,7 @@ const SideBar = ({ uniqueCityArray }) => {
                     id={`sidebar-city__input-${sideCity}`}
                     className="sidebar-city__input"
                     onChange={handleChange}
-                    // checked={sidebarCities[sideCity] === true}
+                    checked={selectedCities.includes(sideCity)}
                   />
                 </label>
               </Link>
