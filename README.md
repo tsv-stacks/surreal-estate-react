@@ -12,7 +12,6 @@
 - [ ] custom style of toast, remove weird janky animation
 - [x] sidebar: make clicking the text update the checkbox
 - [x] make side bar show in alpahebetical order
-- [ ] if uniquecityarray and sidebarcity have content do not change,
 - [ ] if more than one value true, use array.push method on api call
 - [ ] create new array- logic to pop or push depending on whether checked, set array as "to" in Link
 

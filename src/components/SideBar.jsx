@@ -1,48 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Sidebar.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+const qs = require('qs');
 
 const SideBar = ({ uniqueCityArray }) => {
   console.log('sidebar', uniqueCityArray);
 
   const [propertiesArray, setPropertiesArray] = useState([]);
+  const [selectedCities, setSelectedCities] = useState([]);
 
   useEffect(() => {
     setPropertiesArray(uniqueCityArray);
   }, [uniqueCityArray]);
 
-  // const handleChange = (event) => {
-  //   const { checked, name } = event.target;
-  //   console.log('check change', event.target.name);
-  //   setSidebarCities((prev) => ({
-  //     ...prev,
-  //     [name]: !checked,
-  //   }));
-  //   console.log(sidebarCities[name]);
-  // };
-  // create select input for cities
-  // change state of sidebarCities to:
-  // {cityName : "", checkedStatus:}
-  //   make axios request on change using :
-  // surreal-estate-var1.onrender.com/api/v1/PropertyListing?query={"city":["Manchester"]}
+  const handleChange = (event) => {
+    const { value, checked, name } = event.target;
+    console.log(value, checked, name);
+    if (selectedCities.includes(name)) {
+      setSelectedCities(selectedCities.filter((city) => city !== name));
+    } else {
+      setSelectedCities([...selectedCities, name]);
+    }
+    console.log(selectedCities);
+  };
 
-  //   if (sidebarCities.length > 0) {
-  //     return sidebarCities.map((sideCity) => (
-  //       <label htmlFor="sidebar__input">
-  //         <p>City Name</p>
-  //         <input type="checkbox" name="" id="" />
-  //       </label>
-  //     ));
-  //   }
-
-  // if all options unchecked && checked add logic to make normal request
-
-  // create link to create input, pass props
-
-  // use location hook
-  // how to update if more than one locatio, hook, use ternary array to pop and push
-
-  // do not render if uniqueCityArray.length === 0
+  const buildQueryString = (operation, valueObj) => {
+    const { search } = useLocation();
+    console.log(search);
+    const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
+    const newQueryParams = {
+      ...currentQueryParams,
+      [operation]: JSON.stringify(valueObj),
+    };
+    return qs.stringify(newQueryParams, {
+      addQueryPrefix: true,
+      encode: false,
+    });
+  };
   return (
     <nav className="sidebar">
       <h3 className="sidebar-city__title">Filter by city:</h3>
@@ -53,7 +48,7 @@ const SideBar = ({ uniqueCityArray }) => {
               <Link
                 className="sidebar-city__link"
                 key={sideCity}
-                to={`/?query={"city":"${sideCity}"}`}
+                to={buildQueryString('query', { city: `${sideCity}` })}
               >
                 <label
                   className="sidebar-city__label"
@@ -65,7 +60,7 @@ const SideBar = ({ uniqueCityArray }) => {
                     name={`${sideCity}`}
                     id={`sidebar-city__input-${sideCity}`}
                     className="sidebar-city__input"
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     // checked={sidebarCities[sideCity] === true}
                   />
                 </label>
@@ -74,6 +69,11 @@ const SideBar = ({ uniqueCityArray }) => {
           </div>
         )}
       </form>
+      <div className="sidebar-city__sort">
+        <h3 className="sidebar-city__title">Sort by price:</h3>
+        <Link to={buildQueryString('sort', { price: -1 })}>High to Low</Link>
+        <Link to={buildQueryString('sort', { price: 1 })}>Low to High</Link>
+      </div>
     </nav>
   );
 };
