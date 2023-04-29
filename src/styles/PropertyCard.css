@@ -1,0 +1,85 @@
+.prop-title-load__title {
+  text-align: center;
+}
+
+.prop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.prop-card__image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border: 1px solid purple;
+}
+
+.prop-card {
+  font-family: 'Nunito', sans-serif;
+  padding: 0 10px;
+}
+
+.prop-card__title {
+  font-family: 'Libre Baskerville', serif;
+  text-align: center;
+}
+
+.prop-card__container--flex {
+  display: flex;
+}
+
+.prop-card__container-text {
+  margin: 0;
+}
+
+.prop-card--italics {
+  font-style: italic;
+}
+
+.prop-card__container-link {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.prop-card__container--bottom-pad {
+  margin-bottom: 5px;
+}
+
+.prop-card__container-link:link {
+  text-decoration: none;
+}
+
+.prop-card__container-link:visited {
+  text-decoration: none;
+}
+
+.prop-card__container-link:hover {
+  text-decoration: none;
+}
+
+.prop-card__container-link:active {
+  text-decoration: none;
+}
+
+.prop-card__email-text {
+  color: white;
+}
+
+.prop-card__email {
+  background-color: purple;
+  padding: 5px 10px;
+  justify-content: center;
+  max-width: 60%;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+@media (max-width: 425px) {
+  .prop-title-load__title {
+    font-size: 16px;
+  }
+}
