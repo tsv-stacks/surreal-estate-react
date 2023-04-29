@@ -9,8 +9,11 @@
 }
 
 .sidebar-city__label {
-  display: block;
   cursor: pointer;
+}
+
+.sidebar-city__name {
+  margin-left: 5px;
 }
 
 .sidebar-city__title {
@@ -27,4 +30,10 @@
 .sidebar-city {
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-text-search {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
 }
